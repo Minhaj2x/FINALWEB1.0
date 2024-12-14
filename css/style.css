@@ -1,0 +1,11 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+}
+footer {
+    margin-top: 50px;
+    padding: 20px;
+}
+#workout-result {
+    margin-top: 20px;
+}

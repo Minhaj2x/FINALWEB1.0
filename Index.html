@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/fitness.png"> <!-- Favicon -->
+</head>
+<body>
+    <nav class="orange">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">
+                <img src="images/fitness.png" alt="Workout Generator Logo" style="height: 50px; margin-top: 5px;">
+                Workout Generator
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Authentication Section -->
+        <div id="auth-section">
+            <h4 class="center-align">Login</h4>
+            <form id="login-form">
+                <div class="input-field">
+                    <input type="email" id="email" placeholder="Email" required>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="password" placeholder="Password" required>
+                </div>
+                <button class="btn orange waves-effect waves-light" type="submit">Sign In</button>
+            </form>
+        </div>
+
+        <!-- Workout Section (Initially Hidden) -->
+        <div id="main-section" style="display: none;">
+            <div id="workout-section">
+                <h3 class="center-align">Create Your Workout Plan</h3>
+                <form id="workout-form" class="row">
+                    <div class="input-field col s12">
+                        <select id="fitness-level" required>
+                            <option value="" disabled selected>Select Fitness Level</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                        <label for="fitness-level">Fitness Level</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <select id="goal" required>
+                            <option value="" disabled selected>Select Fitness Goal</option>
+                            <option value="weight-loss">Weight Loss</option>
+                            <option value="muscle-gain">Muscle Gain</option>
+                            <option value="endurance">Endurance</option>
+                            <option value="flexibility">Flexibility</option>
+                        </select>
+                        <label for="goal">Fitness Goal</label>
+                    </div>
+                    <button class="btn orange waves-effect waves-light" type="submit">Generate Workout</button>
+                </form>
+                <div id="workout-result" class="card-panel orange lighten-4" style="display: none;">
+                    <h5>Your Workout Plan:</h5>
+                    <p id="result-content"></p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h4 class="center-align">Workout Types</h4>
+                <div class="row">
+                    <div class="col s12 m4">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="images/cardio.jpg" alt="Cardio">
+                            </div>
+                            <div class="card-content">
+                                <p>Boost your heart health and endurance with cardio exercises.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m4">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="images/flexibility.jpg" alt="Flexibility">
+                            </div>
+                            <div class="card-content">
+                                <p>Enhance your mobility and posture with flexibility routines.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m4">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="images/strength-training.jpg" alt="Strength Training">
+                            </div>
+                            <div class="card-content">
+                                <p>Build muscle and improve strength with weight training.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="logout-btn" class="btn red waves-effect waves-light">Sign Out</button>
+        </div>
+    </div>
+
+    <footer class="orange white-text center-align">
+        <p>&copy; 2024 Workout Generator. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- Firebase and App Scripts -->
+    <script type="module" src="js/firebaseConfig.js"></script>
+    <script type="module" src="js/script.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then((registration) => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch((error) => {
+                    console.error('Service Worker registration failed:', error);
+                });
+        }
+    </script>
+</body>
+</html>
